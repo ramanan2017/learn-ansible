@@ -1,0 +1,17 @@
+- name: Demo on conditions
+  hosts: all
+  connection: local   # connect localhost Like ansible-playbook -i localhost, 03-condition.yml
+  vars:
+    fruits: true
+    vegetable: false
+
+  tasks:
+    - name: Print Fruit Name
+      ansible.builtin.debug:
+        msg: Fruits Name - Apple
+      when: fruit is true
+
+    - name: Print Vegetable Name
+      ansible.builtin.debug:
+        msg: Vegetable Name - Carrot
+      when: vegetable is true
